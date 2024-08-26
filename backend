@@ -1,1 +1,41 @@
+// server.js
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // Middleware to parse JSON request bodies
+
+// Sample data for club and election information
+let clubInfo = {
+  name: "Electoral Literacy Club",
+  description: "Promotes voter education and awareness.",
+  members: 50,
+  established: "2022-01-01"
+};
+
+let electionInfo = [
+  {
+    electionYear: 2019,
+    electionType: "General",
+    state: "National",
+    partiesInvolved: ["Party A", "Party B"],
+    results: "Party A won"
+  }
+];
+
+// Routes for Club Information
+app.get('/club', (req, res) => {
+  res.json(clubInfo);
+});
+
+// Routes for Election Information
+app.get('/elections', (req, res) => {
+  res.json(electionInfo);
+});
+
+// Start the Server
+const port = 9000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
 
